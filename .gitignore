@@ -1,0 +1,6 @@
+# saved config settings
+config.py*
+
+# Virtual environment
+ENV
+
