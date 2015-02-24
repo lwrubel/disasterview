@@ -9,7 +9,7 @@ today = datetime.now()
 def getdata(disasters):
     for subject in disasters:    
         p = 1  # start with first page 
-        size = 10 # results size
+        size = 500 # results size
         
         data = requestdata(subject, p, size) # first call to get count
         createfile(data, subject, p) # write first call 
@@ -45,8 +45,8 @@ def processdata(data): # pull out records from docs and only write those to file
                                          # written to file    
     return items 
     
-#disasters = ['earthquakes','hurricanes','floods','forests+AND+fires']
-disasters = ['goldfish']
+disasters = ['earthquakes','hurricanes','floods','forests+AND+fires']
+#disasters = ['goldfish']
 
 getdata(disasters)
 
