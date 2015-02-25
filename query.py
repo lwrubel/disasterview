@@ -36,17 +36,18 @@ def createfile(data, subject, p):
     records = processdata(data) 
     filename = data_dir + '{0}-{1}-{2}.json'.format(subject,today.isoformat(), p)
     f = open(filename, 'w')
-    f.write(records) # new
+    f.write(records) 
     f.close()
 
-def processdata(data): # pull out records from docs and only write those to file
+
+# pull out records from docs 
+def processdata(data): 
     response = data.json()
     items = json.dumps(response['docs']) # creates a string (json) which can be
                                          # written to file    
     return items 
     
 disasters = ['earthquakes','hurricanes','floods','forests+AND+fires']
-#disasters = ['goldfish']
 
 getdata(disasters)
 
