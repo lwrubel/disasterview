@@ -1,6 +1,9 @@
 # saved config settings
 config.py*
 
+# import script with settings
+import.sh
+
 # data directory
 data/
 
