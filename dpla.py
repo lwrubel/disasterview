@@ -1,5 +1,6 @@
 import requests
 import json
+import re
 from datetime import datetime
 from config import dpla_api_key, data_dir
 
@@ -18,8 +19,8 @@ def getdata(disasters):
         pages = json['count'] / size  # get number of pages 
         
         for i in range(pages): # iterate through pages
-            p = i + 2  # to skip over page "0" (doesn't exist) 
-                          # and "1" (already got it)
+            p = i + 2  # skips over page "0" (doesn't exist) 
+                       # and "1" (already got it); get modulo
             data = requestdata(subject, p, size)
             createfile(data, subject, p) 
      
@@ -34,6 +35,9 @@ def requestdata(subject, p, size):
 # create time-stamped and page-stamped files
 def createfile(data, subject, p):
     records = processdata(data) 
+    e = re.compile('\W.*') # regex to simplify subject names that have 
+                           # punctuation or boolean
+    subject = e.sub('', subject)
     filename = data_dir + '{0}-{1}-{2}.json'.format(subject,today.isoformat(), p)
     f = open(filename, 'w')
     f.write(records) 
