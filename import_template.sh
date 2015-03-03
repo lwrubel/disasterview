@@ -1,3 +1,4 @@
+# imports each file in mongodb database
 # run from project directory  
 
 DATA_DIR=pathtofiles
