@@ -15,6 +15,7 @@ def getdata(disasters):
     for subject in disasters:
         query['q'] = subject
         r = requests.get(url, params=query)
+        print r.url
         response = r.json()
         createfile(response['results'], subject, query['sp'])
         
@@ -25,7 +26,7 @@ def getdata(disasters):
             params = parse_qs(urlparse(r.url).query) # creates dict out of params in url
             createfile(response['results'], subject, params['sp'][0])
  
-# write response to one file per subject           
+# write response to timestamped and pagestamped files          
 def createfile(data, subject, page):
     e = re.compile('\W.*') 
     subject = e.sub('', subject)
@@ -34,7 +35,7 @@ def createfile(data, subject, page):
     f.write(json.dumps(data)) 
     f.close()
 
-disasters = ['earthquakes','hurricanes','floods','forest%20fires']
+disasters = ['earthquakes','hurricanes','floods','forest fires']
 
 getdata(disasters)
         
