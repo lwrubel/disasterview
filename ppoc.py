@@ -15,7 +15,6 @@ def getdata(disasters):
     for subject in disasters:
         query['q'] = subject
         r = requests.get(url, params=query)
-        print r.url
         response = r.json()
         createfile(response['results'], subject, query['sp'])
         
