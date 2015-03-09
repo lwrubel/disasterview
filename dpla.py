@@ -36,12 +36,12 @@ def createfile(data, subject, p):
     e = re.compile('\W.*') # regex to simplify subject names that have 
                            # punctuation or boolean
     subject = e.sub('', subject)
-    filename = data_dir + '{0}-{1}-{2}.json'.format(subject,today.isoformat(), p)
+    filename = data_dir + '{0}-{1}-{2}-dpla.json'.format(subject,today.isoformat(), p)
     f = open(filename, 'w')
     f.write(json.dumps(data)) 
     f.close()
     
-disasters = ['earthquakes','hurricanes','floods','forests+AND+fires']
+disasters = ['earthquakes','hurricanes','floods','forest+AND+fires']
 
 getdata(disasters)
 

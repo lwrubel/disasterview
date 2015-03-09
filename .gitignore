@@ -10,3 +10,5 @@ data/
 # Virtual environment
 ENV
 
+# all pyc files
+*.pyc

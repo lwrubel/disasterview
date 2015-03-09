@@ -15,8 +15,11 @@ def single_disaster():
     title = hurricane['sourceResource']['title']
     thumb = hurricane['object']
     return render_template('index.html', title=title, thumb=thumb)
+    
+@app.route('/hurricanes/')
+def browse_images():
+    items = list(db.hurricanes.find({}))
+    
+    return render_template('hurricanes.html', items=items) 
 
-@app.route('/floods/')
-def browse_images(): 
-    return 'Flood images will be here'
 
