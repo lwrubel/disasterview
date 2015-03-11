@@ -12,7 +12,7 @@ db = connect()
 @app.route('/')
 def single_disaster():
     hurricane = db.hurricanes.find_one()
-    title = hurricane['sourceResource']['title']
+    title = hurricane['title']
     thumb = hurricane['object']
     return render_template('index.html', title=title, thumb=thumb)
     

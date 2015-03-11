@@ -33,7 +33,7 @@ def requestdata(subject, p, size):
 
 # create time-stamped and page-stamped files
 def createfile(data, subject, p):
-    e = re.compile('\W.*') # regex to simplify subject names that have 
+    e = re.compile('\W.*') # regex to simplify search statements that have 
                            # punctuation or boolean
     subject = e.sub('', subject)
     filename = data_dir + '{0}-{1}-{2}-dpla.json'.format(subject,today.isoformat(), p)
