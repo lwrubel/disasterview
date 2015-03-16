@@ -4,11 +4,13 @@
 		<h1>Browse images of {{event_type}}</h1>
 	</div>
 	{% for row in items|batch(4) %}
-		<div class="row">
+			<div class="row">
 			{% for item in row %}
 			<div class="col-xs-6 col-md-3">
-				<a href="{{item.nativeView}}" class="thumbnail"><img src="{{item.thumbnail}}"></a>
-			
+			    <div class="thumbnail">
+				<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
+			    <div class="caption"><p>{{item.title}} from {{item.coll[0]}}</p></div>
+			    </div> 
 			</div>
 			{% endfor %}
 		</div>

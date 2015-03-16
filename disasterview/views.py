@@ -10,11 +10,15 @@ def connect():
 db = connect()    
 
 @app.route('/')
+def return_cover():    
+    return render_template('main.html')
+
+@app.route('/single/')
 def single_disaster():
     hurricane = db.hurricanes.find_one()
     title = hurricane['title']
     thumbnail = hurricane['thumbnail']
-    return render_template('index.html', title=title, thumbnail=thumbnail)
+    return render_template('single.html', title=title, thumbnail=thumbnail)
     
 @app.route('/disasters/<event_type>/')
 def browse_images(event_type):
@@ -24,3 +28,4 @@ def browse_images(event_type):
     for i in range(0,24):
         thumbnails.append(items[i])
     return render_template('events.html', items=thumbnails, event_type=event_type)  
+
