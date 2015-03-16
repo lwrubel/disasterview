@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block body %}
 	<div class="row">
-		<h1>All the hurricanes</h1>
+		<h1>Browse images of {{event_type}}</h1>
 	</div>
 	{% for row in items|batch(4) %}
 		<div class="row">
 			{% for item in row %}
 			<div class="col-xs-6 col-md-3">
-				<a href="{{item.fullview}}" class="thumbnail"><img src="{{item.thumbnail}}"></a>
+				<a href="{{item.nativeView}}" class="thumbnail"><img src="{{item.thumbnail}}"></a>
 			
 			</div>
 			{% endfor %}

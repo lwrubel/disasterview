@@ -16,20 +16,11 @@ def single_disaster():
     thumbnail = hurricane['thumbnail']
     return render_template('index.html', title=title, thumbnail=thumbnail)
     
-@app.route('/disasters/hurricanes/')
-def browse_hurricane_images():
-    items = list(db.hurricanes.find())
-    return render_template('hurricanes.html', items=items) 
-	#needs thumbnail, maybe later include more 
-
-@app.route('/disasters/floods/')
-def floods_view():    
-    items = list(db.floods.find({}))
-    return render_template('hurricanes.html', items=items)
-
-
-@app.route('/disasters/forestfires/')
-def forestfires_view():    
-    items = list(db.forest.find({}))
-    return render_template('hurricanes.html', items=items)
-
+@app.route('/disasters/<event_type>/')
+def browse_images(event_type):
+    items = list(db[event_type].find())
+    thumbnails = []
+    # temporarily limiting number of items displayed
+    for i in range(0,24):
+        thumbnails.append(items[i])
+    return render_template('events.html', items=thumbnails, event_type=event_type)  
