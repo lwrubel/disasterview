@@ -7,14 +7,13 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="an experiment with digital collections APIs">
     <link rel="icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/static/custom.css">
-	<link href='http://fonts.googleapis.com/css?family=Lora:400,700|Quattrocento+Sans:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/static/cover.css" >
+	<link href='http://fonts.googleapis.com/css?family=Lora:400,700|Droid+Sans:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	
     <title>Disaster-view</title>
-    <!-- this template from Boostrap examples: http://getbootstrap.com/examples/cover/ -->
-    <!-- Custom styles for this template -->
-    <link href="/static/cover.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -24,9 +23,44 @@
   </head>
 
   <body>
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
+  
+  <nav class="navbar navbar-fixed-top navbar-default nav-cover ">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Home</a>
+		</div>
+	
+		<div class="collapse navbar-collapse" id="collapse-1">
+		  <ul class="nav navbar-nav">
+			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+				Browse Images<span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+				  <li><a href="/disasters/earthquakes/">Earthquakes</a></li>
+				  <li><a href="/disasters/floods/">Floods</a></li>
+				  <li><a href="/disasters/forests/">Forest Fires</a></li>
+				  <li><a href="/disasters/hurricanes">Hurricanes</a></li>
+				</ul>
+			</li>
+			<li><a href="#" >Maps</a></li>
+			<li><a href="#">Credits</a></li>
+		  </ul> 
+		</div>
+	  
+	</div> <!-- end container -->
+ </nav>
+        
+        
+        
+<div class="container">
+  <div class="row col-sm-12">
+  <div class="cover-container">
+          <!-- <div class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">Disaster-view</h3>
               <nav>
@@ -37,19 +71,20 @@
                 </ul>
               </nav>
             </div>
-          </div>
+          </div> -->
 
-          <div class="inner cover">
-            {% block body %}{% endblock %}
-          </div>
+  <!-- <div class="inner cover"> -->
+    {% block body %}{% endblock %}
+  <!-- </div> -->
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-            </div>
-          </div>
-
-        </div>
+  <!-- <div class="mastfoot">
+	<div class="inner">
+	  <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+	</div> -->
+  <!-- </div>  -->
+ </div> <!-- end cover-container-->
+ </div><!-- end row -->
+</div> <!-- end cover-container -->
 
 
 
@@ -57,8 +92,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+</body>
 </html>
