@@ -29,3 +29,29 @@ def browse_images(event_type):
         thumbnails.append(items[i])
     return render_template('events.html', items=thumbnails, event_type=event_type)  
 
+@app.route('/map/')
+def show_map(): 
+    items = []
+    # need to add loop to go through disasters, with label
+    # get all records that have coordinates in points list
+    locations = list(db.earthquakes.find({"points" : { "$exists" : True}}))    
+    for location in locations:
+        for point in location['points']:
+            items.append({'point': point,'title': location['title'], 'url': location['platformView']})
+    return render_template('map.html', items=items)
+
+#experimenting with paging to support infinite scroll, not finished
+@app.route('/pages/')
+def page_results():
+    event_type = 'floods'
+    all = db[event_type].find().count()
+    # page 1
+
+    n = 24
+    while n < (all / n):
+        items = list(db[event_type].find().limit(n))
+        last_id = items[(n-1)]['_id']
+        x = list(db[event_type].find({'_id'> last_id}).limit(n))
+    return render_template('pages.html', items=items, event_type=event_type,
+        last_id=last_id)
+

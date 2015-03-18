@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/static/custom.css">
 	<link href='http://fonts.googleapis.com/css?family=Lora:400,700|Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+	{% block scripts %}{% endblock %}
+
 	<title>Disaster-view</title>
 </head>
 <body>
@@ -34,7 +36,7 @@
 				  <li><a href="/disasters/hurricanes">Hurricanes</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Maps</a></li>
+			<li><a href="/map/">Map</a></li>
 			<li><a href="#">Credits</a></li>
 		  </ul> 
 		</div>
@@ -43,13 +45,12 @@
   </nav>
 
   <div class="container">
-		<div class="row">
+		
 			{% block body %}{% endblock %}
-		</div>
 	
 		<footer class="row">
 		</footer>
-
+		{% block bottom_scripts %}{% endblock %}
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) and bootstrap -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
