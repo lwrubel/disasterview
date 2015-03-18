@@ -1,0 +1,52 @@
+
+html,
+body {
+  height: 100%;
+  background-color: #000;
+  
+}
+body {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5); 
+  background: url("cover_flood.jpg") no-repeat scroll 0px / cover transparent;
+  background-attachment: fixed;
+}
+
+.cover-container { 
+  padding: 150px
+  text-align: center;
+}
+
+
+  
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+  }
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #ed7207;
+  }
+
+.navbar-default .navbar-brand {
+  color: #fff;
+  }
+
+.navbar-default .navbar-brand > li > a:hover {
+  color: #ed7207;
+  }
+
+
+.nav-cover {
+  background-color: transparent;
+  background-image: none;
+  position: fixed;
+  width: 100%;
+  padding: 0;
+  color: #fff;
+  
+}
+
+.mastfoot {
+  color: #999; /* IE8 proofing */
+  color: rgba(255,255,255,.5);
+}
