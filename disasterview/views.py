@@ -21,7 +21,7 @@ def single_disaster():
     return render_template('single.html', title=title, thumbnail=thumbnail)
     
 @app.route('/disasters/<event_type>/')
-def browse_images(event_type):
+def browse_images(event_type): # event_type is a database collection
     items = list(db[event_type].find())
     thumbnails = []
     # temporarily limiting number of items displayed
@@ -32,12 +32,15 @@ def browse_images(event_type):
 @app.route('/map/')
 def show_map(): 
     items = []
-    # need to add loop to go through disasters, with label
-    # get all records that have coordinates in points list
-    locations = list(db.earthquakes.find({"points" : { "$exists" : True}}))    
-    for location in locations:
-        for point in location['points']:
-            items.append({'point': point,'title': location['title'], 'url': location['platformView']})
+    # names of collections in database
+    disasters = ['earthquakes','floods','forest','hurricanes']
+    for disaster in disasters:
+        # get all records that have coordinates in points list
+        locations = list(db[disaster].find({"points" : { "$exists" : True}}))    
+        for location in locations:
+            for point in location['points']:
+                items.append({'point': point,'title': location['title'], 
+                    'url': location['platformView'], 'disaster': disaster})
     return render_template('map.html', items=items)
 
 #experimenting with paging to support infinite scroll, not finished
