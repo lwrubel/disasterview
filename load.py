@@ -46,8 +46,18 @@ def get_dpla(item):
          
     if "spatial" in item.get("sourceResource"):
         record["spatial"] = []
+        points = []
         for space in item["sourceResource"]["spatial"]:
             record["spatial"].append(space)
+            # filter out coordinates for center of US and
+            # put coordinates in its own list: points
+            if "coordinates" in space:
+                if space["coordinates"] == "39.4432563782, -98.9573364258":
+                    pass
+                else: 
+                    points.append(space["coordinates"])
+            if len(points):
+                record["points"] = points               
          
     if "subject" in item.get("sourceResource"):
        record["subjects"] = []  
