@@ -9,7 +9,7 @@
 			<div class="col-xs-6 col-md-3">
 			    <div class="thumbnail">
 				<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
-			    <div class="caption"><p>{{item.title}} from {{item.coll[0]}}</p></div>
+			    <div class="caption"><p>{{item.title}} {% if item.coll %}from {{item.coll[0]}}{% endif %}</p></div>
 			    </div> 
 			</div>
 			{% endfor %}

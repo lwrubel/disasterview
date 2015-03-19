@@ -38,11 +38,12 @@ def get_dpla(item):
 
     if "collection" in item["sourceResource"]:
         record["coll"] = []
-        try:
+        try: # if list of dictionaries
             record["coll"].append(item["sourceResource"]["collection"]["title"])
-        except:
-            for x in item["sourceResource"]["collection"]:
-                record["coll"].append(x.get("title"))
+        except: # if dictionary
+            for collection in item["sourceResource"]["collection"]:
+                if len(collection.get("title")): 
+                    record["coll"].append(collection.get("title"))
          
     if "spatial" in item.get("sourceResource"):
         record["spatial"] = []
