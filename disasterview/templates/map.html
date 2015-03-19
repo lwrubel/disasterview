@@ -17,39 +17,56 @@
 {% endblock %}
 {% block bottom_scripts %}
 <script>
- var map = L.map('map').setView([37.6,-95.665], 5);
+ var map = L.map('map', {
+     center: [37.6, -95.665], 
+     zoom: 5,
+     });
 
- L.tileLayer('http://{s}.tiles.mapbox.com/v3/lwrubel.a6f7ecd1/{z}/{x}/{y}.png', {
+L.tileLayer('http://{s}.tiles.mapbox.com/v3/lwrubel.a6f7ecd1/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18
     }).addTo(map);
 
-//var markers = new L.MarkerClusterGroup();
+ var hurricanesMarkers = new L.MarkerClusterGroup();
+ var floodsMarkers = new L.MarkerClusterGroup();
+ var forestMarkers = new L.MarkerClusterGroup();
+ var earthquakesMarkers = new L.MarkerClusterGroup();
  
  var hurricanes = new L.LayerGroup();
  var floods = new L.LayerGroup();
  var forest = new L.LayerGroup();
  var earthquakes = new L.LayerGroup();
  
+ 
  {% for item in items %}
       var marker = L.marker([{{item.point}}])
       marker.bindPopup('<a href="{{item.url}}">{{item.title}}</a>');
-     {% if item.disaster == 'hurricanes' %}  
-      hurricanes.addLayer(marker);
+      {% if item.disaster == 'hurricanes' %} 
+        hurricanesMarkers.addLayer(marker); 
+        hurricanes.addLayer(hurricanesMarkers);
       {% elif item.disaster == 'earthquakes' %}
-      earthquakes.addLayer(marker);
+        earthquakesMarkers.addLayer(marker); 
+        earthquakes.addLayer(earthquakesMarkers);
       {% elif item.disaster == 'floods' %}
-      floods.addLayer(marker);
+        floodsMarkers.addLayer(marker); 
+        floods.addLayer(floodsMarkers);
       {% elif item.disaster == 'forest' %}
-      forest.addLayer(marker);
-    {% endif %}
+        forestMarkers.addLayer(marker); 
+        forest.addLayer(forestMarkers);
+      {% endif %}
  {% endfor %}
  
+  hurricanes.addTo(map);
+  earthquakes.addTo(map);
+  floods.addTo(map);
+  forest.addTo(map);
+  
  var overlayMaps = {
-    "Earthquakes": earthquakes, "Floods": floods, "Forest Fires": forest, "Hurricanes": hurricanes
+    "Earthquakes": earthquakes, "Floods": floods, "Forest Fires": forest, "Hurricanes": hurricanes, 
   };
 
-  L.control.layers(null,overlayMaps).addTo(map);
+  L.control.layers(null, overlayMaps, {collapsed: false}).addTo(map);
+
 // map.addLayer(markers); 
 </script>
 {% endblock %}
