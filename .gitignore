@@ -9,3 +9,7 @@ ENV
 
 # all pyc files
 *.pyc
+
+# images
+disasterview/static/cover_flood.jpg
+

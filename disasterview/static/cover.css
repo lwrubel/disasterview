@@ -6,8 +6,7 @@ body {
   
 }
 body {
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5); 
+  color: #fff; 
   background: url("cover_flood.jpg") no-repeat scroll 0px / cover transparent;
   background-attachment: fixed;
 }
@@ -17,27 +16,30 @@ body {
   text-align: center;
 }
 
+.navbar {
+  background: rgba(77, 91, 43, .5);
+  border: none
+  }
 
+.navbar-default .navbar-header > a:hover {
+  color: #E1B07E
+  }
   
+.navbar-default .navbar-nav > li > a:hover {
+  color: #E1B07E;
+  }
+
 .navbar-default .navbar-nav > li > a {
   color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
 
-.navbar-default .navbar-nav > li > a:hover {
-  color: #ed7207;
-  }
-
-.navbar-default .navbar-brand {
+.navbar-header .navbar-brand {
   color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
-
-.navbar-default .navbar-brand > li > a:hover {
-  color: #ed7207;
-  }
-
 
 .nav-cover {
-  background-color: transparent;
   background-image: none;
   position: fixed;
   width: 100%;

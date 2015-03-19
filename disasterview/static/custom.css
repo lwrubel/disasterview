@@ -1,18 +1,44 @@
 body { 
-   padding: 100px; 
-   font-family: 'Lora', serif;
+  padding: 100px; 
+  font-family: 'Lora', serif;
+  background: #2C2D22
    }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-   font-family: 'Droid Sans', serif;
-	}	
+  font-family: 'Droid Sans', serif;
+  color: #fff;
+  }	
 
+.h1 {
+  
+  }
+  
 .navbar {
-	font-family: 'Droid Sans', sans-serif;
-	font-size: 18px;
-	}
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 18px;
+  background: rgba(77, 91, 43, .8);
+  border: none
+  }
+
+.navbar-default .navbar-header > a:hover {
+  color: #E1B07E
+  }
+  
+.navbar-default .navbar-nav > li > a:hover {
+  color: #E1B07E;
+  }
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
+
+.navbar-header .navbar-brand {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
 
 #map { 
-    height: 600px; 
-    padding: 100px;
+    height: 550px; 
+    padding: 50px;
     }
