@@ -8,11 +8,12 @@
 <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 {% endblock %}
 {% block body %}
-
+ <div class="row">
 	<div class="col-sm-12">
 		 <div id="map"></div>
 	</div>
-	
+    
+</div>
 {% endblock %}
 {% block bottom_scripts %}
 <script>
@@ -23,15 +24,32 @@
     maxZoom: 18
     }).addTo(map);
 
- var markers = new L.MarkerClusterGroup();
-   
+//var markers = new L.MarkerClusterGroup();
+ 
+ var hurricanes = new L.LayerGroup();
+ var floods = new L.LayerGroup();
+ var forest = new L.LayerGroup();
+ var earthquakes = new L.LayerGroup();
+ 
  {% for item in items %}
-   var marker = L.marker([{{item.point}}])
-   marker.bindPopup('<a href="{{item.url}}">{{item.title}}</a>')
-   markers.addLayer(marker);
+      var marker = L.marker([{{item.point}}])
+      marker.bindPopup('<a href="{{item.url}}">{{item.title}}</a>');
+     {% if item.disaster == 'hurricanes' %}  
+      hurricanes.addLayer(marker);
+      {% elif item.disaster == 'earthquakes' %}
+      earthquakes.addLayer(marker);
+      {% elif item.disaster == 'floods' %}
+      floods.addLayer(marker);
+      {% elif item.disaster == 'forest' %}
+      forest.addLayer(marker);
+    {% endif %}
  {% endfor %}
  
- map.addLayer(markers);
-     
+ var overlayMaps = {
+    "Earthquakes": earthquakes, "Floods": floods, "Forest Fires": forest, "Hurricanes": hurricanes
+  };
+
+  L.control.layers(null,overlayMaps).addTo(map);
+// map.addLayer(markers); 
 </script>
 {% endblock %}
