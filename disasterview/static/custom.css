@@ -8,10 +8,6 @@ body {
   font-family: 'Droid Sans', serif;
   color: #fff;
   }	
-
-.h1 {
-  
-  }
   
 .navbar {
   font-family: 'Droid Sans', sans-serif;
@@ -41,4 +37,30 @@ body {
 #map { 
     height: 550px; 
     padding: 50px;
+    }
+
+/* customizations to leaflet-markercluster */
+
+.marker-cluster-small {
+	background-color: rgba(154, 144, 156, 0.6);
+	}
+.marker-cluster-small div {
+	background-color: rgba(90, 53, 98, 0.7);
+	}
+
+.marker-cluster-medium {
+	background-color: rgba(154, 144, 156, 0.6);
+	}
+.marker-cluster-medium div {
+	background-color: rgba(90, 53, 98, 0.7);
+	}
+
+.marker-cluster-large {
+	background-color: rgba(154, 144, 156, 0.6);
+	}
+.marker-cluster-large div {
+	background-color: rgba(90, 53, 98, 0.7);
+	}
+.marker-cluster div {
+    color: #fff;
     }
