@@ -44,7 +44,7 @@
  
  {% for item in items %}
       var marker = L.marker([{{item.point}}],{icon: purpleIcon})
-      marker.bindPopup('<a href="{{item.url}}">{{item.title}}</a>');
+      marker.bindPopup('<img src="{{item.thumbnail}}"><br><a href="{{item.url}}" target="_blank">{{item.title}}</a>');
       {% if item.disaster == 'hurricanes' %} 
         hurricanesMarkers.addLayer(marker); 
         hurricanes.addLayer(hurricanesMarkers);

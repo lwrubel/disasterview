@@ -56,5 +56,5 @@ def show_map():
         for location in locations:
             for point in location['points']:
                 items.append({'point': point,'title': location['title'], 
-                    'url': location['platformView'], 'disaster': disaster})
+                    'url': location['nativeView'], 'thumbnail': location['thumbnail'], 'disaster': disaster})
     return render_template('map.html', items=items)
