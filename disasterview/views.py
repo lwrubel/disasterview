@@ -21,29 +21,17 @@ def single_disaster():
     thumbnail = hurricane['thumbnail']
     return render_template('single.html', title=title, thumbnail=thumbnail)
     
-@app.route('/disasters/<event_type>/')
-def browse_images(event_type): # event_type is a database collection
-    page_size = 100
-    pagenum = 1
-    nopages = int(math.ceil( db[event_type].find().count() / page_size))   
-    
-    # get first page
-    page = db[event_type].find().limit(page_size)
-    
-    return render_template('events.html', items=page, event_type=event_type, 
-        nopages=nopages, pagenum=pagenum)  
-
-@app.route('/disasters/<event_type>/<n>/')
+@app.route('/disasters/<event_type>/', defaults={'n': 1})
+@app.route('/disasters/<event_type>/<int:n>/')
 def browse_images_pages(event_type, n):
     page_size = 100
-    pagenum = int(n)
     nopages = int(math.ceil( db[event_type].find().count() / page_size))   
  
     # database is not too big, so using .skip() instead of last_id-based find
-    page = db[event_type].find().skip(page_size * (pagenum - 1)).limit(page_size)
+    page = db[event_type].find().skip(page_size * (n - 1)).limit(page_size)
     
     return render_template('events.html', items=page, event_type=event_type, 
-        nopages=nopages, pagenum=pagenum)
+        nopages=nopages, pagenum=n)
     
 @app.route('/map/')
 def show_map(): 
@@ -58,3 +46,7 @@ def show_map():
                 items.append({'point': point,'title': location['title'], 
                     'url': location['nativeView'], 'thumbnail': location['thumbnail'], 'disaster': disaster})
     return render_template('map.html', items=items)
+
+#@app.route('/picker/<event_type>/')
+#def image_picker(event_type):
+    
