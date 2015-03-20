@@ -42,21 +42,21 @@ body {
 /* customizations to leaflet-markercluster */
 
 .marker-cluster-small {
-	background-color: rgba(154, 144, 156, 0.6);
+	background-color: rgba(154, 144, 156, 0.4);
 	}
 .marker-cluster-small div {
 	background-color: rgba(90, 53, 98, 0.7);
 	}
 
 .marker-cluster-medium {
-	background-color: rgba(154, 144, 156, 0.6);
+	background-color: rgba(154, 144, 156, 0.4);
 	}
 .marker-cluster-medium div {
 	background-color: rgba(90, 53, 98, 0.7);
 	}
 
 .marker-cluster-large {
-	background-color: rgba(154, 144, 156, 0.6);
+	background-color: rgba(154, 144, 156, 0.4);
 	}
 .marker-cluster-large div {
 	background-color: rgba(90, 53, 98, 0.7);
