@@ -15,5 +15,49 @@
 			{% endfor %}
 		</div>
 	{% endfor %}
-	</div>
+	</div> <!-- end row -->
+	<div class="row">
+		<nav>
+		  <ul class="pagination">
+			{% if pagenum == range(0,nopages)[1] %}
+				<li class="disabled">
+				  <a href="" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				  </a>
+				</li>
+			{% else %}
+				<li>
+				  <a href="/disasters/{{event_type}}/{{pagenum - 1 }}" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				  </a>
+				</li>
+			{% endif %}
+			
+			{% for n in range(0,nopages) %}
+		      {% if (n + 1) == pagenum %}
+		         <li class="active"><a href="/disasters/{{event_type}}"</a>{{pagenum}}</a></li>
+		         
+		      {% else %}
+			      <li><a href="/disasters/{{event_type}}/{{n + 1}}"</a>{{n + 1}}</a></li>
+			  {% endif %}
+			{% endfor %}
+			
+			{% if pagenum == (range(0,nopages)[-1]) + 1 %}
+				<li class="disabled">
+				  <a href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				  </a>
+				</li>
+			{% else %}
+				<li>
+				  <a href="/disasters/{{event_type}}/{{pagenum + 1}}" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				  </a>
+				</li>
+			{% endif %}
+		  </ul>
+		</nav>
+	</div> <!-- end row -->
+
+</div>
 {% endblock %}
