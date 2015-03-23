@@ -12,10 +12,21 @@ body {
 }
 
 .cover-container { 
-  padding: 150px
-  text-align: center;
+  padding: 150px;
 }
 
+.cover-main h1 {
+  text-align: center;
+  font-size: 80px;
+  font-family: 'Vast Shadow', cursive; 
+}
+
+.cover-main p {
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  text-shadow: 0 5px 5px rgba(50,50,50,.8);
+}
 .navbar {
   background: rgba(77, 91, 43, .5);
   border: none
@@ -25,13 +36,14 @@ body {
   color: #E1B07E
   }
   
-.navbar-default .navbar-nav > li > a:hover {
-  color: #E1B07E;
-  }
 
 .navbar-default .navbar-nav > li > a {
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #E1B07E;
   }
 
 .navbar-header .navbar-brand {
