@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
 	<div class="row">
-		<h1>Browse images of {{event_type}}</h1>
+		<h1>Browse images of {{label}}</h1>
 	</div>
 	{% for row in items|batch(4) %}
 			<div class="row">

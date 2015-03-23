@@ -10,6 +10,8 @@ def connect():
     
 db = connect()    
 
+names = {'earthquakes':'earthquakes','floods': 'floods','forest': 'forest fires','hurricanes':'hurricanes'}
+
 @app.route('/')
 def return_cover():    
     return render_template('main.html')
@@ -24,8 +26,8 @@ def single_disaster():
 @app.route('/disasters/<event_type>/', defaults={'n': 1})
 @app.route('/disasters/<event_type>/<int:n>/')
 def browse_images_pages(event_type, n):
-    page_size = 100.0 # needs to be float for 1-page scenario
-    nopages = int(math.ceil( float(db[event_type].find().count()) / page_size))   
+    page_size = 100 
+    nopages = int(math.ceil( float(db[event_type].find().count()) / float(page_size)))   
  
     # database is not too big, so using .skip() instead of last_id-based find
     if nopages > 1:
@@ -34,7 +36,7 @@ def browse_images_pages(event_type, n):
         page =  db[event_type].find()
         
     return render_template('events.html', items=page, event_type=event_type, 
-        nopages=nopages, pagenum=n)
+        nopages=nopages, pagenum=n, label=names[event_type])
     
 @app.route('/map/')
 def show_map(): 

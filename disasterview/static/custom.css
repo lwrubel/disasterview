@@ -1,6 +1,6 @@
 body { 
   padding: 100px; 
-  font-family: 'Lora', serif;
+  font-family: 'Droid Serif', serif;
   background: #2C2D22
    }
 
@@ -20,15 +20,15 @@ body {
   color: #E1B07E
   }
   
-.navbar-default .navbar-nav > li > a:hover {
-  color: #E1B07E;
-  }
-
 .navbar-default .navbar-nav > li > a {
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
 
+.navbar-default .navbar-nav > li > a:hover {
+  color: #E1B07E;
+  }
+  
 .navbar-header .navbar-brand {
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
