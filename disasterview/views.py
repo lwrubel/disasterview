@@ -24,12 +24,15 @@ def single_disaster():
 @app.route('/disasters/<event_type>/', defaults={'n': 1})
 @app.route('/disasters/<event_type>/<int:n>/')
 def browse_images_pages(event_type, n):
-    page_size = 100
-    nopages = int(math.ceil( db[event_type].find().count() / page_size))   
+    page_size = 100.0 # needs to be float for 1-page scenario
+    nopages = int(math.ceil( float(db[event_type].find().count()) / page_size))   
  
     # database is not too big, so using .skip() instead of last_id-based find
-    page = db[event_type].find().skip(page_size * (n - 1)).limit(page_size)
-    
+    if nopages > 1:
+        page = db[event_type].find().skip(page_size * (n - 1)).limit(page_size)
+    else:
+        page =  db[event_type].find()
+        
     return render_template('events.html', items=page, event_type=event_type, 
         nopages=nopages, pagenum=n)
     
@@ -47,6 +50,7 @@ def show_map():
                     'url': location['nativeView'], 'thumbnail': location['thumbnail'], 'disaster': disaster})
     return render_template('map.html', items=items)
 
-#@app.route('/picker/<event_type>/')
-#def image_picker(event_type):
-    
+@app.route('/picker/<event_type>/')
+def image_picker(event_type): # retrieves all results in one page
+    items = db[event_type].find() 
+    return render_template('picker.html', items=items, event_type=event_type)

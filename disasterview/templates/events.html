@@ -9,7 +9,7 @@
 			<div class="col-xs-6 col-md-3">
 			    <div class="thumbnail">
 				<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
-			    <div class="caption"><p>{{item.title}} {% if item.coll %}from {{item.coll[0]}}{% endif %}</p></div>
+			    <div class="caption"><p>{{item.title}} {% if item.coll %}from <i>{{item.coll[0]}}</i>{% endif %}</p></div>
 			    </div> 
 			</div>
 			{% endfor %}
@@ -19,7 +19,7 @@
 	<div class="row">
 		<nav>
 		  <ul class="pagination">
-			{% if pagenum == range(0,nopages)[1] %}
+			{% if pagenum == 1 %}
 				<li class="disabled">
 				  <a href="" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
