@@ -20,6 +20,7 @@ def get_dpla(item):
         return None
     if item["object"] == "http://fdlp.gov/images/gpo-tn.jpg":
         return None 
+    
     record = {
         "id": item['id'],
         "title": item["sourceResource"]["title"],
@@ -39,12 +40,17 @@ def get_dpla(item):
     if "collection" in item["sourceResource"]:
         record["coll"] = []
         try: # if list of dictionaries
-            record["coll"].append(item["sourceResource"]["collection"]["title"])
+            record["coll"].append(item["sourceResource"]["collection"]["title"])  
         except: # if dictionary
             for collection in item["sourceResource"]["collection"]:
                 if len(collection.get("title")): 
                     record["coll"].append(collection.get("title"))
-         
+        try: 
+            record["coll"][0] == "Records of the Federal Emergency Management Agency, 1956 - 2008"
+            return None
+        except:
+            pass
+            
     if "spatial" in item.get("sourceResource"):
         record["spatial"] = []
         points = []
