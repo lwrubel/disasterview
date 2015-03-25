@@ -36,7 +36,7 @@ def get_dpla(item):
         "rights": item.get("sourceResource").get("rights"),   
         "source": "dpla"  
     }
-
+    # account for missing data and different data types
     if "collection" in item["sourceResource"]:
         record["coll"] = []
         try: # if list of dictionaries
@@ -74,7 +74,7 @@ def get_dpla(item):
     return record
     
 def get_ppoc(item):
-    if re.match('.*(lithograph|drawing|photomechanical|engraving|silkscreen)',
+    if re.match('.*(lithograph|drawing|photomechanical|engraving|silkscreen|wood)',
         item["medium"]) != None:
         return None
     record = {
@@ -87,7 +87,7 @@ def get_ppoc(item):
         "displayDate": item["created_published_date"],
         "coll": item["collection"],
         "subject": item["subjects"],
-        "source": "ppoc"
+        "source": "ppoc",
     }
     return record
 
@@ -107,7 +107,6 @@ for filename in os.listdir(data_dir):
             record = get_ppoc(item)
         else:
             raise Exception("unknown source: %s" % source)
-#        print record
         if record:
             db[collection].insert(record)
 

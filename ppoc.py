@@ -14,7 +14,7 @@ query = {'c':50, 'sp': 1, 'fo':'json', 'co!':'hh', #exclude HAER, HABS
 def getdata(disasters):
     for subject in disasters:
         query['q'] = subject
-        r = requests.get(url, params=query)
+        r = requests.get(url, params=query)	
         response = r.json()
         createfile(response['results'], subject, query['sp'])
         

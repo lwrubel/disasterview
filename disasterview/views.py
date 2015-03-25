@@ -33,7 +33,7 @@ def browse_images_pages(event_type, n):
     if nopages > 1:
         page = db[event_type].find().skip(page_size * (n - 1)).limit(page_size)
     else:
-        page =  db[event_type].find()
+        page = db[event_type].find()
         
     return render_template('events.html', items=page, event_type=event_type, 
         nopages=nopages, pagenum=n, label=names[event_type])
