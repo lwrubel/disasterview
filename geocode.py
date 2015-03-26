@@ -34,10 +34,10 @@ def loc_lookup():
                     db[disaster].update({'id': item['id']},{'$set':{'points': points}})
             except ValueError:
                 print 'ValueError', url
-            except AttributeError:
+            except AttributeError: # ids formatted with slashes
                 print 'AttributeError', url
             
-# next, test all coordinates for being in US bounding box, roughly:
+# next, test *all* ppoc coordinates for being in US bounding box, roughly:
 # (NE 49.590370, -66.932640, SW 24.949320, -125.001106)
 
 def check_coordinates():
@@ -54,10 +54,22 @@ def check_coordinates():
                 db[disaster].update({'id': item['id']},{'$unset':{'points': ''}})
 
 
+# check DPLA country field (enhanced geodata) for non-US
+def check_country():
+    print 'checking dpla country data'
+    for disaster in disasters:
+        items = db[disaster].find({'source': 'dpla', 'spatial': {'$exists' : True}})
+        for item in items:
+            for space in item['spatial']:
+                if space.get('country'):
+                    if space.get('country') != "United States":
+                        #remove the geo coordinates from that record since it's questionable
+                        db[disaster].update({'id': item['id']},{'$unset':{'points': ''}})
+           
 if __name__ == '__main__':
-    loc_lookup()
-    check_coordinates()
-	
+   loc_lookup()
+   check_coordinates()
+   check_country()	
 
 
 
