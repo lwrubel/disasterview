@@ -37,9 +37,8 @@ def createfile(data, subject, p):
                            # punctuation or boolean into mongo-acceptable form
     subject = e.sub('', subject)
     filename = data_dir + '{0}-{1}-{2}-dpla.json'.format(subject,today.isoformat(), p)
-    f = open(filename, 'w')
-    f.write(json.dumps(data)) 
-    f.close()
+    with open(filename, 'w') as f:
+        f.write(json.dumps(data)) 
     
 disasters = ['earthquakes','hurricanes','floods','forest+AND+fires']
 

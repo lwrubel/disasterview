@@ -3,21 +3,23 @@
 	<div class="row">
 		<h1>Browse images of {{label}}</h1>
 	</div>
-	{% for row in items|batch(4) %}
-			<div class="row">
-			{% for item in row %}
-			<div class="col-xs-6 col-md-3">
-			    <div class="thumbnail">
-				<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
-			    <div class="caption"><p>{{item.title}} {% if item.coll %}from <i>{{item.coll[0]}}</i>{% endif %}</p></div>
-			    </div> 
-			</div>
-			{% endfor %}
-		</div>
-	{% endfor %}
-	</div> <!-- end row -->
 	<div class="row">
-		<nav>
+	  <div class="scroller">
+			{% for row in items|batch(4) %}
+				{% for item in row %}
+				<div class="item col-xs-6 col-sm-2">
+					<div class="thumbnail">
+					<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
+					<div class="caption"><p>{{item.title}} {% if item.coll %}from <i>{{item.coll[0]}}</i>{% endif %}</p></div>
+					</div> 
+				</div>
+				{% endfor %}
+			{% endfor %}
+	  </div>
+	</div> <!-- end row -->
+	
+	<div class="row">
+		<nav class="page-list">
 		  <ul class="pagination">
 			{% if pagenum == 1 %}
 				<li class="disabled">
@@ -49,7 +51,7 @@
 				  </a>
 				</li>
 			{% else %}
-				<li>
+				<li class="next">
 				  <a href="/disasters/{{event_type}}/{{pagenum + 1}}" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>
 				  </a>
@@ -58,6 +60,44 @@
 		  </ul>
 		</nav>
 	</div> <!-- end row -->
+{% endblock %}
 
-</div>
+{% block bottom_scripts %}
+	{% if pagenum == 1 %}
+	<script>
+	  $( document ).ready(function(){
+ 
+		 var $container = $('.scroller');
+ 
+		 $container.imagesLoaded(function(){
+		   $container.masonry({
+			 itemSelector: '.item',
+		   });
+		 });
+	 
+		 $container.infinitescroll({
+		   navSelector: ".page-list ul.pagination",
+		   nextSelector: "ul.pagination .next a",
+		   itemSelector: ".item", 
+		   loading: {	
+			   finishedMsg: "<em><span class='msg'>The end.</span></em>",
+			   msgText: "<em><span class='msg'>Loading the next set of images...</span></em>",
+			   img: "http://i.imgur.com/6RMhx.gif"
+			   }
+		   }, 
+		   function( newElements ) {
+			 // hide new items while they are loading
+			 var $newElems = $( newElements ).css({ opacity: 0 });
+			 // ensure that images load before adding to masonry layout
+			 $newElems.imagesLoaded(function(){
+			   // show elems now they're ready
+			   $newElems.animate({ opacity: 1 });
+			   $container.masonry( 'appended', $newElems, true );
+			 }); 
+		   });
+		});
+		
+	</script>
+	{% endif %}
+
 {% endblock %}

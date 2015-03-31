@@ -51,8 +51,3 @@ def show_map():
                 items.append({'point': point,'title': location['title'], 
                     'url': location['nativeView'], 'thumbnail': location['thumbnail'], 'disaster': disaster})
     return render_template('map.html', items=items)
-
-@app.route('/picker/<event_type>/')
-def image_picker(event_type): # retrieves all results in one page
-    items = db[event_type].find() 
-    return render_template('picker.html', items=items, event_type=event_type)

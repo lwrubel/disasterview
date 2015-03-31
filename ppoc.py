@@ -30,10 +30,9 @@ def createfile(data, subject, page):
     e = re.compile('\W.*') 
     subject = e.sub('', subject)
     filename = data_dir + '{0}-{1}-{2}-ppoc.json'.format(subject,today.isoformat(),page)
-    f = open(filename, 'w')
-    f.write(json.dumps(data)) 
-    f.close()
-
+    with open(filename, 'w') as f:
+        f.write(json.dumps(data)) 
+    
 disasters = ['earthquakes','hurricanes','floods','forest fires']
 
 getdata(disasters)
