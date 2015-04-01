@@ -7,10 +7,12 @@
 	  <div class="scroller">
 			{% for row in items|batch(4) %}
 				{% for item in row %}
-				<div class="item col-xs-6 col-sm-2">
+				<div class="item col-xs-12 col-sm-6 col-md-2">
 					<div class="thumbnail">
 					<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
-					<div class="caption"><p>{{item.title}} {% if item.coll %}from <i>{{item.coll[0]}}</i>{% endif %}</p></div>
+					<div class="caption"><p>{{item.title}}</p>
+					   <div class="credit">source: {% if item.source == "dpla" %}DPLA{% else %}PPOC{% endif %}</div>
+					</div>
 					</div> 
 				</div>
 				{% endfor %}
@@ -80,8 +82,8 @@
 		   nextSelector: "ul.pagination .next a",
 		   itemSelector: ".item", 
 		   loading: {	
-			   finishedMsg: "<em><span class='msg'>The end.</span></em>",
-			   msgText: "<em><span class='msg'>Loading the next set of images...</span></em>",
+			   finishedMsg: "<em><span class='msg'>no more images</span></em>",
+			   msgText: "<em><span class='msg'>loading the next set of images...</span></em>",
 			   img: "http://i.imgur.com/6RMhx.gif"
 			   }
 		   }, 

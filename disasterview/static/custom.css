@@ -4,6 +4,10 @@ body {
   background: #2C2D22
    }
 
+.credit {
+  font-size: 10px;
+  }
+  
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   font-family: 'Droid Sans', serif;
   color: #fff;
@@ -11,8 +15,12 @@ body {
  
 /* .item { width: 25%; } */
 
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff
+  }
+  
 .msg {
-  color: #000;
+  color: #fff;
   }
   
 .navbar {
@@ -26,20 +34,27 @@ body {
   color: #E1B07E
   }
   
-.navbar-default .navbar-nav > li > a  {
+.navbar-default .navbar-nav > li > a:link {
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
 
+.navbar-default .navbar-nav > li > a:visited {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  }
+  
 .navbar-default .navbar-nav > li > a:hover {
   color: #E1B07E;
   }
-  
+
 .navbar-header .navbar-brand {
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
   }
 
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a 
 .page-list {
   display: none;
 }
