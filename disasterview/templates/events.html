@@ -9,9 +9,12 @@
 				{% for item in row %}
 				<div class="item col-xs-12 col-sm-6 col-md-2">
 					<div class="thumbnail">
-					<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
-					<div class="caption"><p>{{item.title}}</p>
-					   <div class="credit">source: {% if item.source == "dpla" %}DPLA{% else %}PPOC{% endif %}</div>
+						<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
+						<div class="caption"><p>{{item.title}}</p>
+						   <div class="credit">source: {% if item.source == "dpla" %}DPLA{% else %}PPOC{% endif %}</div>
+						</div>
+					<div class="picker">
+						<p><a href="#"><span class="glyphicon glyphicon-ok-sign checkmark" name="selection" active="false" data-dbid="{{item.id}}" aria-label="select item"></span></a></p>
 					</div>
 					</div> 
 				</div>
@@ -65,6 +68,7 @@
 {% endblock %}
 
 {% block bottom_scripts %}
+	<!-- infinite scroll and masonry tiles -->
 	{% if pagenum == 1 %}
 	<script>
 	  $( document ).ready(function(){
@@ -101,5 +105,42 @@
 		
 	</script>
 	{% endif %}
-
+	
+	<!-- picker -->
+    <script> 
+      $( ".picker" ).on("click", function (event) { 
+        // check if selected already
+        var status = event.target.getAttribute("active");
+        if (status == "false") {
+			
+			//set to selected and change color
+			event.target.setAttribute("active", "true");
+			event.target.style.color = "#E1B07E";
+			
+			//set up count variable in sessionStorage
+			if (sessionStorage.getItem("count") == undefined) {
+				  sessionStorage["count"] = "0";          
+				} 			
+			// add dbid to sessionStorage
+			count = Number(sessionStorage["count"]) + 1; //count is a number
+			var dbid = event.target.getAttribute("data-dbid");
+			sessionStorage["data-dbid_" + String(count)] = dbid;
+			sessionStorage["count"] = String(count); //count is now a string
+		} 
+		else if (status == "true") {
+			event.target.style.color = "#999";
+			event.target.setAttribute("active", "false");
+			dbid = event.target.getAttribute("data-dbid");
+			
+			for (var i = 0; i < sessionStorage.length; i++) {
+    			var key = sessionStorage.key(i);
+    			var value = sessionStorage.getItem(key);
+    			if (value == dbid) {
+    				sessionStorage.removeItem(key);
+    			}
+			}
+		}	
+      });
+    </script>
+    
 {% endblock %}
