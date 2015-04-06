@@ -9,12 +9,12 @@
 				{% for item in row %}
 				<div class="item col-xs-12 col-sm-6 col-md-2">
 					<div class="thumbnail">
-						<a href="{{item.nativeView}}" alt=""><img src="{{item.thumbnail}}"></a>
+						<a href="{{item.nativeView}}" alt="" target="_blank"><img src="{{item.thumbnail}}"></a>
 						<div class="caption"><p>{{item.title}}</p>
 						   <div class="credit">source: {% if item.source == "dpla" %}DPLA{% else %}PPOC{% endif %}</div>
 						</div>
 					<div class="picker">
-						<p><a href="#"><span class="glyphicon glyphicon-ok-sign checkmark" name="selection" active="false" data-dbid="{{item.id}}" aria-label="select item"></span></a></p>
+						<p><a href="#" class="pick"><span class="glyphicon glyphicon-ok-sign checkmark" name="selection" active="false" data-dbid="{{item.id}}" aria-label="select item"></span></a></p>
 					</div>
 					</div> 
 				</div>
@@ -86,9 +86,8 @@
 		   nextSelector: "ul.pagination .next a",
 		   itemSelector: ".item", 
 		   loading: {	
-			   finishedMsg: "<em><span class='msg'>no more images</span></em>",
-			   msgText: "<em><span class='msg'>loading the next set of images...</span></em>",
-			   img: "http://i.imgur.com/6RMhx.gif"
+			   finishedMsg: "",
+			   img: "/static/ajax-loader.gif"
 			   }
 		   }, 
 		   function( newElements ) {
@@ -116,6 +115,7 @@
 			//set to selected and change color
 			event.target.setAttribute("active", "true");
 			event.target.style.color = "#E1B07E";
+			event.preventDefault();
 			
 			//set up count variable in sessionStorage
 			if (sessionStorage.getItem("count") == undefined) {
@@ -124,12 +124,15 @@
 			// add dbid to sessionStorage
 			count = Number(sessionStorage["count"]) + 1; //count is a number
 			var dbid = event.target.getAttribute("data-dbid");
-			sessionStorage["data-dbid_" + String(count)] = dbid;
+			var urlparts = location.href.split("/");
+			var disaster = urlparts[4]; 
+			sessionStorage["data-dbid_" + disaster + "_" + String(count)] = dbid;
 			sessionStorage["count"] = String(count); //count is now a string
 		} 
 		else if (status == "true") {
 			event.target.style.color = "#999";
 			event.target.setAttribute("active", "false");
+			event.preventDefault();
 			dbid = event.target.getAttribute("data-dbid");
 			
 			for (var i = 0; i < sessionStorage.length; i++) {

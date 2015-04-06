@@ -16,13 +16,6 @@ names = {'earthquakes':'earthquakes','floods': 'floods','forest': 'forest fires'
 def return_cover():    
     return render_template('main.html')
 
-@app.route('/single/')
-def single_disaster():
-    hurricane = db.hurricanes.find_one()
-    title = hurricane['title']
-    thumbnail = hurricane['thumbnail']
-    return render_template('single.html', title=title, thumbnail=thumbnail)
-    
 @app.route('/disasters/<event_type>/', defaults={'n': 1})
 @app.route('/disasters/<event_type>/<int:n>/')
 def browse_images_pages(event_type, n):
@@ -51,3 +44,12 @@ def show_map():
                 items.append({'point': point,'title': location['title'], 
                     'url': location['nativeView'], 'thumbnail': location['thumbnail'], 'disaster': disaster})
     return render_template('map.html', items=items)
+
+@app.route('/picker/')
+def picklist():
+    items = []
+    disasters = ['earthquakes','floods','forest','hurricanes']
+
+    return render_template('picker.html', items=items)
+    
+    
