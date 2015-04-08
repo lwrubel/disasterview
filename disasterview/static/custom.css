@@ -3,7 +3,15 @@ body {
   font-family: 'Droid Serif', serif;
   background: #2C2D22
    }
+
+.button {
+ font-family: 'Droid Sans', serif;
+  }
   
+.caption > p {
+  color: #000;
+  }
+
 .credit {
   font-size: 12px;
   }
@@ -75,6 +83,23 @@ a:hover > .glyphicon {
    overflow: visible;
 }
 
+.text-container {
+  color: #2E4057; /* dark gray */
+  }
+
+.text-container h1, .text-container h2, .text-container h3 {
+  color: #2E4057; /* dark gray */
+  }
+
+.text-container p, .text-container li{
+  color: #2E4057; /* dark gray */
+  }
+
+.text-container a {
+  color: #8d4c0a; /* dark orange */
+  }
+
+
 #map { 
     height: 550px; 
     padding: 50px;
@@ -105,3 +130,11 @@ a:hover > .glyphicon {
 .marker-cluster div {
     color: #fff;
     }
+    
+p, li {
+  color: #fff;
+  }
+  
+p > a, li > a {
+  color: #8d5216;
+  }

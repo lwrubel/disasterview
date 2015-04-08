@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block body %}
+    <h1>About this project</h1>
+        <p>This web application was created by Laura Wrubel, as the product of a three-month research leave from the 
+        George Washington University Libraries. The primary goal of my research leave was to develop new coding skills and 
+        gain experience with a number of web technologies, including APIs from several large digital collections. 
+        The <a href="http://www.mith.umd.edu">Maryland Institute for Technology for the Humanities</a>
+         (MITH) at the University of Maryland hosted me during my sabbatical and provided advice and educational 
+         opportunities.</p>
+        
+        <p>In DisasterView, I'm exploring ways to visualize image collections from the <a href="http://dp.la">Digital
+        Public Library of America (DPLA)</a> and the <a href="http://www.loc.gov/pictures">Library of Congress Prints and 
+        Photographs Online Catalog</a>. Both sites provide access to a wide range of images across time and geography. 
+        I chose to focus on images of catastrophe, specifically natural disasters, such as hurricanes, floods, earthquakes 
+        and forest fires. </p>
+        
+        <p>Code for the site is <a href="http://www.github.com/lwrubel/disasterview">posted on Github</a>. The application uses:
+        <ul>
+          <li>Python scripts for connecting to the APIs and loading content into a database</li>
+          <li>MongoDB as a database, with PyMongo to connect to it from the web app</li>
+          <li>Flask</li>
+          <li>LeafletJS and leaflet marker-cluster for maps</li>
+          <li>Bootstrap</li>
+          <li>jQuery, Masonry, Infinite-Scroll, and ImagesLoaded</li>
+          <li>Google Fonts</li>
+        </ul>
+        
+	<h2>Credits</h2>
+        
+        <p>This project and my related time learning code would not have been possible without:</p>
+        
+        <p>George Washington University Libraries and its support for librarian research leave, and my colleagues who
+          covered my responsibilities during my time away. </p>
+        
+        <p>The <a href="http://www.mith.umd.edu">Maryland Institute for Technology for the Humanities</a>
+         (MITH) at the University of Maryland, who kindly hosted me during my three-month research leave. The MITH staff, particularly
+         Trevor Muñoz and Ed Summers, were generous with their time, advice, and encouragement. I have a great admiration for the 
+         thoughtful and inspired work they are accomplishing. </p>
+        
+        <p>I am also grateful to:</p>
+        <ul>
+          <li>Josh Westgard, Ben Wallberg, and the rest of the Code Workshop at University of Maryland Libraries, for 
+          allowing me to attend their weekly code meetings where they share code problems and work on solutions together</li>
+          <li>The <a href="http://www.meetup.com/dc-pyladies/">PyLadies DC</a> group, who offered a free workshop on Flask 
+          and other opportunities to learn Python</li>
+          <li>Mark Matienzo at the DPLA for answering my questions about the DPLA API</li>
+          <li>The Digital Library Federation (DLF), for the DPLA + DLF Cross-Pollinator travel 
+          grant that is allowing me to attend DPLAfest in April 2015. </li>
+          <li>Dave Woodward at the Library of Congress for answering my questions about their new API</li>
+          <li>Dan Chudnov at GW Libraries for advice about learning to code</li>
+        
+        </ul>
+        
+    <h2>Resources for learning code</h2>
+    <p>I found the following resources helpful in learning the technologies used in this project:</p>
+    
+    <ul>
+      <li>Learn Python the Hard Way</li>
+      <li>Learning Python</li>
+      <li>Eloquent Javascript</li>
+      <li>Up and Running with Bootstrap 3</li>
+    </ul>    
+    
+    <h2>Photo credits</h2>
+      <p>Home page background photo: </p>
+      <p>Thumbnail images are from the content contributors to the DPLA and from the Library of Congress Prints and Photographs Online
+      Catalog. See each site for information about rights of use for the full images. </p>
+{% endblock %}
