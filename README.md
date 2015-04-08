@@ -12,7 +12,7 @@ Uses:
 * <a href="http://jquery.com/">jQuery</a>, <a href="http://masonry.desandro.com/">Masonry</a>, <a href="https://github.com/infinite-scroll/infinite-scroll">Infinite-Scroll</a>, and <a href="http://imagesloaded.desandro.com/">ImagesLoaded</a>
 * <a href="http://www.google.com/fonts">Google Fonts</a>
 
-This web application was created as the product of a three-month research leave from the George Washington University Libraries and is a work in progress. 
+This web application was created during a three-month research leave from the George Washington University Libraries and is a work in progress. 
  
 
  
