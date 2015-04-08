@@ -19,7 +19,7 @@ def return_cover():
 
 @app.route('/credits/')
 def show_credits():
-    return render_template('about.html')
+    return render_template('credits.html')
 
 
 @app.route('/disasters/<event_type>/', defaults={'n': 1})
