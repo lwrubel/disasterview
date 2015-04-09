@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from pymongo import MongoClient
 import requests
 import json	
