@@ -125,21 +125,22 @@
         if (status == "false") {
 			
 			//set to selected and change color
+			event.preventDefault();
 			event.target.setAttribute("active", "true");
 			event.target.style.color = "#E1B07E";
-			event.preventDefault();
+			
 			
 			//set up count variable in sessionStorage
 			if (sessionStorage.getItem("count") == undefined) {
 				  sessionStorage["count"] = "0";          
 				} 			
 			// add dbid to sessionStorage
-			count = Number(sessionStorage["count"]) + 1; //count is a number
+			count = Number(sessionStorage["count"]) + 1; //sessionStorage had a string
 			var dbid = event.target.getAttribute("data-dbid");
 			var urlparts = location.href.split("/");
 			var disaster = urlparts[4]; 
 			sessionStorage["db_" + disaster + "_" + String(count)] = dbid;
-			sessionStorage["count"] = String(count); //count is now a string
+			sessionStorage["count"] = String(count); //sessionStorage requires string
 		} 
 		else if (status == "true") {
 			event.target.style.color = "#999";

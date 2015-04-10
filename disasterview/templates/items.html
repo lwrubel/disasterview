@@ -16,8 +16,12 @@
 			<div class="media-body">
 				<h4 class="media-heading">
 				  <a href="{{item.nativeView}}" target="_blank">{{item.title}}</a></h4>
-				<p>{% if item.date %}{{item.displayDate}}. {% endif %}{% if item.coll %}{{item.coll}}, {% endif %} {{item.provider}},  
-				via {% if item.source == "dpla" %}Digital Public Library of America{% else %}Library of Congress{% endif %}</p>
+				
+				<p>{% if item.date %}{{item.displayDate}}. {% endif %} {{item.provider}}, from 
+				{% if item.source == "dpla" %}
+				    {% if item.coll %}{{item.coll}}, {% endif %}Digital Public Library of America
+				{% endif %}</p>
+				
 				{% if item.description %}<p>{{item.description}}. </p>{% endif %}
 			</div>
 		</div>
@@ -25,13 +29,13 @@
 		
 	  <div> <!-- end col -->
 	</div> <!-- end row -->
-</div> <!-- end text-container -->
+</div> <!-- end container -->
 {% endblock %}
 
 {% block bottom_scripts %}
 <script>
 $(document).ready(function(){
-	$( "body" ).css("background-color","#DFEACF");
+	$( "body" ).css("background-color","#e7ece0");
 });
 </script> 
 {% endblock %}
