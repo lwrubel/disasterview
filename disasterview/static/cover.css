@@ -8,7 +8,7 @@ body {
 body {
   color: #fff; 
   background: url("cover_flooddkcp2.jpg") no-repeat scroll 0px / cover transparent;
-  background-position: top center;
+  background-position: center center;
   background-attachment: fixed;
 }
 
@@ -33,8 +33,20 @@ body {
 .jumbotron {
   background: transparent;
   }
- 
-.mastfoot {
-  color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  
+@media only screen and (min-device-width : 200px) and (max-device-width : 480px) {
+body {
+  color: #fff; 
+  background: url("cover_flood_mob.jpg") no-repeat center center scroll 0px / cover transparent;
+  }
+.cover-container { 
+  padding: 10px 0 0 0;
+}
+.cover-main h1 {
+  text-align: center;
+  font-size: 48px;
+  font-family: 'Vast Shadow', cursive; 
+  text-shadow: 0 5px 5px rgba(100,100,100,.7);
+}
+
 }
