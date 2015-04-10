@@ -1,7 +1,7 @@
 body { 
   padding: 100px; 
   font-family: 'Droid Serif', serif;
-  background: #2C2D22
+  background: #2C2D22 /* very dark gray */
    }
 
 .button {
@@ -22,7 +22,7 @@ body {
   }
 
 a:hover > .glyphicon {
-  color: #E1B07E;
+  color: #E1B07E; /* pale orange */
   }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -48,7 +48,7 @@ a:hover > .glyphicon {
   }
 
 .navbar-default .navbar-header > a:hover {
-  color: #E1B07E
+  color: #E1B07E /* pale orange */
   }
   
 .navbar-default .navbar-nav > li > a:link {
@@ -62,7 +62,7 @@ a:hover > .glyphicon {
   }
   
 .navbar-default .navbar-nav > li > a:hover {
-  color: #E1B07E;
+  color: #E1B07E; /* medium orange */
   }
 
 .navbar-header .navbar-brand {

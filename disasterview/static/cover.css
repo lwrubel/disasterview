@@ -7,59 +7,37 @@ body {
 }
 body {
   color: #fff; 
-  background: url("cover_flood.jpg") no-repeat scroll 0px / cover transparent;
+  background: url("cover_flooddkcp2.jpg") no-repeat scroll 0px / cover transparent;
+  background-position: top center;
   background-attachment: fixed;
 }
 
 .cover-container { 
-  padding: 200px 50px 50px 50px;
+  padding: 50px;
 }
 
 .cover-main h1 {
   text-align: center;
   font-size: 80px;
   font-family: 'Vast Shadow', cursive; 
+  text-shadow: 0 5px 5px rgba(100,100,100,.7);
 }
 
 .cover-main p {
   font-family: 'Droid Sans', sans-serif;
-  font-size: 30px;
+  font-size: 24px;
   text-align: center;
-  text-shadow: 0 5px 5px rgba(50,50,50,.8);
-}
-.navbar {
-  background: rgba(77, 91, 43, .5);
-  border: none
-  }
-
-.navbar-default .navbar-header > a:hover {
-  color: #E1B07E
-  }
-  
-
-.navbar-default .navbar-nav > li > a {
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-  }
-
-.navbar-default .navbar-nav > li > a:hover {
-  color: #E1B07E;
-  }
-
-.navbar-header .navbar-brand {
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-  }
-
-.nav-cover {
-  background-image: none;
-  position: fixed;
-  width: 100%;
-  padding: 0;
-  color: #fff;
-  
+  text-shadow: 0 5px 5px rgba(30,30,30,.8);
 }
 
+.jumbotron {
+  background: transparent;
+  }
+  
+p.small {
+  font-size: 20px;
+  }
+  
 .mastfoot {
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
