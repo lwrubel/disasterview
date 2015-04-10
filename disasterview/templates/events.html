@@ -2,7 +2,7 @@
 {% block body %}
 <div class="container">
 	<div class="row">
-		<div class="col-xs-6 col-md-9">
+		<div class="col-xs-12 col-md-9">
 		<h1>Browse images of {{label}}</h1>
 		</div>
 		
@@ -19,7 +19,7 @@
 				<div class="item col-xs-12 col-sm-6 col-md-2">
 					<div class="thumbnail">
 						<a href="{{item.nativeView}}" alt="" target="_blank"><img src="{{item.thumbnail}}"></a>
-						<div class="caption"><p>{{item.title}}</p>
+						<div class="caption"><p>{{item.title}}. {% if item.displayDate %}{{item.displayDate}}{% else %}(no date){% endif %}
 						   <div class="credit">source: {% if item.source == "dpla" %}DPLA{% else %}PPOC{% endif %}</div>
 						</div>
 					<div class="picker">

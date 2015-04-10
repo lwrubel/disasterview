@@ -7,6 +7,10 @@ body {
 .button {
  font-family: 'Droid Sans', serif;
   }
+
+.thumbnail .caption {
+  padding: 9px 5px 0px 5px;
+  }
   
 .caption > p {
   color: #000;
@@ -83,6 +87,11 @@ a:hover > .glyphicon {
   padding-right: 8px;
   }
 
+.picker p {
+  padding: 0px;
+  margin: 0px;
+  }
+  
 .scroller {
    overflow: visible;
 }
@@ -102,7 +111,6 @@ a:hover > .glyphicon {
 .text-container a {
   color: #8d4c0a; /* dark orange */
   }
-
 
 #map { 
     height: 550px; 
