@@ -23,7 +23,7 @@
 						   <div class="credit">source: {% if item.source == "dpla" %}DPLA{% else %}PPOC{% endif %}</div>
 						</div>
 					<div class="picker">
-						<p><a href="#" class="pick"><span class="glyphicon glyphicon-ok-sign checkmark" name="selection" active="false" data-dbid="{{item.id}}" aria-label="select item"></span></a></p>
+						<p><a href="" class="pick"><span class="glyphicon glyphicon-ok-sign checkmark" name="selection" active="false" data-dbid="{{item.id}}" aria-label="select item"></span></a></p>
 					</div>
 					</div> 
 				</div>
@@ -81,7 +81,7 @@
 {% block bottom_scripts %}
 	
 	<!-- infinite scroll and masonry tiles -->
-	{% if pagenum == 1 %}
+
 	<script>
 	  $( document ).ready(function(){
  
@@ -115,11 +115,11 @@
 		});
 		
 	</script>
-	{% endif %}
+
 	
 	<!-- picker -->
     <script> 
-      $(".picker").on("click", function (event) { 
+      $(".scroller").on("click", ".picker", function (event) { 
         // check if selected already
         var status = event.target.getAttribute("active");
         if (status == "false") {
