@@ -7,7 +7,7 @@ body {
 }
 body {
   color: #fff; 
-  background: url("cover_flooddkcp2.jpg") no-repeat scroll 0px / cover transparent;
+  background: url("cover_flooddkcp2.jpg") no-repeat 0px / cover transparent;
   background-position: center center;
   background-attachment: fixed;
 }
@@ -34,20 +34,26 @@ body {
   background: transparent;
   }
   
-@media only screen and (min-device-width : 200px) and (max-device-width : 480px) {
-body {
-  color: #fff; 
-  background: url("cover_flood_mob.jpg") no-repeat center center scroll 0px / cover transparent;
-  }
   
-.cover-container { 
-  padding: 10px 0 0 0;
-}
-.cover-main h1 {
-  text-align: center;
-  font-size: 48px;
-  font-family: 'Vast Shadow', cursive; 
-  text-shadow: 0 5px 5px rgba(100,100,100,.7);
-}
-
+@media only screen and (min-device-width : 200px) and (max-device-width : 480px) {
+	body {
+	  color: #fff; 
+	  }
+	    
+	.cover-container { 
+	  padding: 10px 0 0 0;
+	}
+	.cover-main h1 {
+	  text-align: center;
+	  font-size: 48px;
+	  font-family: 'Vast Shadow', cursive; 
+	  text-shadow: 0 5px 5px rgba(100,100,100,.7);
+	}
+	
+	.cover-main p {
+	  font-family: 'Droid Sans', sans-serif;
+	  font-size: 16px;
+	  text-align: center;
+	  text-shadow: 0 5px 5px rgba(30,30,30,.8);
+	}
 }
