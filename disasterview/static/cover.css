@@ -2,7 +2,7 @@
 html,
 body {
   height: 100%;
-  background-color: #000;
+  background-color: #848484;
   
 }
 body {
@@ -39,6 +39,7 @@ body {
   color: #fff; 
   background: url("cover_flood_mob.jpg") no-repeat center center scroll 0px / cover transparent;
   }
+  
 .cover-container { 
   padding: 10px 0 0 0;
 }

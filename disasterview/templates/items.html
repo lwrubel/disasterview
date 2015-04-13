@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 {% block body %} 
-<div class="container-fluid text-container">
+<div class="container text-container">
 	<div class="row">
+	  <div class="col-xs-12">
 	  <h1>Image selections</h1>
+	  </div>
 	</div>
 	<div class="row">
-	   <div class="col-xs-12">
+	  <div class="col-xs-12">
 		{% for item in items %}
-		<div class="media">
+		<div class="media"> 
 			<div class="media-left">
 				<a href="{{item.nativeView}}" target="_blank">
 				  <img class="media-object" src="{{item.thumbnail}}" alt="thumbnail">
 				</a>
 			</div>
-			<div class="media-body">
+			 <div class="media-body">
 				<h4 class="media-heading">
 				  <a href="{{item.nativeView}}" target="_blank">{{item.title}}</a></h4>
 				

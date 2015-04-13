@@ -6,6 +6,7 @@ body {
 
 .button {
  font-family: 'Droid Sans', serif;
+ padding-bottom: 5px;
   }
 
 .thumbnail .caption {
@@ -33,8 +34,6 @@ a:hover > .glyphicon {
   font-family: 'Droid Sans', serif;
   color: #fff;
   }	
- 
-/* .item { width: 25%; } */
 
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #fff
@@ -149,4 +148,12 @@ p, li {
   
 p > a, li > a {
   color: #8d5216;
+  }
+  
+@media (max-width: 767px)
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: #777;
+}
+.navbar-default .navbar-nav .open .dropdown-menu {
+  background-color: #fff;
   }
