@@ -4,6 +4,7 @@ from pymongo import MongoClient
 import requests
 import json	
 from bson.json_util import dumps
+from time import sleep
 
 def connect():
     client = MongoClient()
@@ -21,22 +22,26 @@ query = {'fo':'json', 'at':'item'}
 
 def loc_lookup():
     print 'looking up at loc.gov'
+    session = requests.Session()
     for disaster in disasters:
         items = db[disaster].find({'source': 'ppoc'})
         for item in items:
             url = loc_url + item['id']
+            sleep(.5)
             try:
-                response = requests.get(url, params=query).json()
+                print 'checking ', url 
+                response = session.get(url, params=query).json()
                 coordinates = response['item'].get('latlong')
                 if coordinates == None:
                     pass
                 else:
                     points = []
                     points.append(coordinates)
-                    db[disaster].update({'id': item['id']},{'$set':{'points': points}})
+                    print "found coordinates"
+                    db[disaster].update({'id': item['id']},{'$set':{'points': points}})                    
             except ValueError:
                 print 'ValueError', url
-            except AttributeError: # ids formatted with slashes
+            except AttributeError: # ids formatted with slashes?
                 print 'AttributeError', url
             
 # next, test *all* ppoc coordinates for being in US bounding box, roughly:
